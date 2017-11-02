@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8118DBD1FABA1DA00294556 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8118DBC1FABA1DA00294556 /* Images.xcassets */; };
+		D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */; };
 		E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D71FA50521008A2D22 /* AppDelegate.swift */; };
 		E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D91FA50521008A2D22 /* ViewController.swift */; };
 		E63FD6DD1FA50521008A2D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63FD6DB1FA50521008A2D22 /* Main.storyboard */; };
-		E63FD6DF1FA50521008A2D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E63FD6DE1FA50521008A2D22 /* Assets.xcassets */; };
 		E63FD6E21FA50521008A2D22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63FD6E01FA50521008A2D22 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D8118DBC1FABA1DA00294556 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		E63FD6D41FA50521008A2D22 /* SmartFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63FD6D71FA50521008A2D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E63FD6D91FA50521008A2D22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E63FD6DC1FA50521008A2D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E63FD6DE1FA50521008A2D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E63FD6E11FA50521008A2D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E63FD6E31FA50521008A2D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,9 +59,10 @@
 				E63FD6D71FA50521008A2D22 /* AppDelegate.swift */,
 				E63FD6D91FA50521008A2D22 /* ViewController.swift */,
 				E63FD6DB1FA50521008A2D22 /* Main.storyboard */,
-				E63FD6DE1FA50521008A2D22 /* Assets.xcassets */,
 				E63FD6E01FA50521008A2D22 /* LaunchScreen.storyboard */,
 				E63FD6E31FA50521008A2D22 /* Info.plist */,
+				D8118DBC1FABA1DA00294556 /* Images.xcassets */,
+				D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -123,8 +126,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8118DBD1FABA1DA00294556 /* Images.xcassets in Resources */,
 				E63FD6E21FA50521008A2D22 /* LaunchScreen.storyboard in Resources */,
-				E63FD6DF1FA50521008A2D22 /* Assets.xcassets in Resources */,
 				E63FD6DD1FA50521008A2D22 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */,
+				D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */,
 				E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +281,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsu.SmartFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsu.SmartFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
