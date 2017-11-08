@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		D8118DBD1FABA1DA00294556 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8118DBC1FABA1DA00294556 /* Images.xcassets */; };
 		D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */; };
+		D897D7511FB26E590088E767 /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897D7501FB26E590088E767 /* DashboardTableViewCell.swift */; };
+		D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FC91FB2717B006AC73A /* Dashboard.swift */; };
+		D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */; };
+		D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75231FABF0A600FCE0EC /* HomeModel.swift */; };
+		D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */; };
 		E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D71FA50521008A2D22 /* AppDelegate.swift */; };
 		E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D91FA50521008A2D22 /* ViewController.swift */; };
 		E63FD6DD1FA50521008A2D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63FD6DB1FA50521008A2D22 /* Main.storyboard */; };
@@ -18,6 +23,11 @@
 /* Begin PBXFileReference section */
 		D8118DBC1FABA1DA00294556 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
+		D897D7501FB26E590088E767 /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
+		D8E41FC91FB2717B006AC73A /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiUrl.swift; sourceTree = "<group>"; };
+		D8FF75231FABF0A600FCE0EC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeItemsModel.swift; sourceTree = "<group>"; };
 		E63FD6D41FA50521008A2D22 /* SmartFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63FD6D71FA50521008A2D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E63FD6D91FA50521008A2D22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +73,11 @@
 				E63FD6E31FA50521008A2D22 /* Info.plist */,
 				D8118DBC1FABA1DA00294556 /* Images.xcassets */,
 				D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */,
+				D8FF75231FABF0A600FCE0EC /* HomeModel.swift */,
+				D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */,
+				D897D7501FB26E590088E767 /* DashboardTableViewCell.swift */,
+				D8E41FC91FB2717B006AC73A /* Dashboard.swift */,
+				D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -139,9 +154,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D897D7511FB26E590088E767 /* DashboardTableViewCell.swift in Sources */,
+				D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */,
 				E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */,
 				D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */,
 				E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */,
+				D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */,
+				D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */,
+				D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,12 +301,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsu.SmartFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -297,12 +317,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsu.SmartFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
