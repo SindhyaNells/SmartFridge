@@ -124,6 +124,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         
         let DNS = RestApiUrl ()
         
+        
         /*let itemString = displayItem.text
         
         let name = itemString?.components(separatedBy: "\nQ").first
@@ -143,13 +144,15 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         print(exp ?? "error")*/
         
         let name = "Eggs"
-        let quantity = "6"
+        let quantity = "5"
         let price = "2"
-        let mfg = "10/10/2017"
-        let exp = "11/10/2017"
+        let mfg = "10/10/2017 12:00:00"
+        let exp = "11/10/2017 12:00:00"
         
-        //POST Request
-        let params = ["userID":"3", "name":name,"quantity": quantity,"price": price, "mfgDate":mfg, "expDate":exp, "status":"ispresent"] as Dictionary<String,String>
+        //POST Request to Add items to fridge
+        let params = ["userId":"2", "name":name,"quantity": quantity,"price": price, "mfgDate":mfg, "expDate":exp, "status":"ispresent"] as Dictionary<String,String>
+        
+        //print(params)
         
         var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/addNewItem")!) 
         request.httpMethod = "POST"
@@ -157,43 +160,41 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let session = URLSession.shared
+        print("Printing response next")
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print(response ?? "Error connecting to Rest API - Add Items to fridge")
-            
-            if error != nil {
-                print("Failed to download data")
-            }else {
-                print("Data Obtained")
-                self.parseJSON(data!)
+            print( response ?? "Error connecting to Rest API - Add Items to fridge")
+            if error != nil
+            {
+                print("Failed to connect to Add Item API")
+                print(error!)
             }
-            /*do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                print(json)
-            } catch {
-                print("error")
-            }*/
+            else
+            {
+                print("Connected to Add Item API")
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse
+            {
+                if httpResponse.statusCode == 200
+                {
+                    print("Inserted!")
+                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Added To Refrigerator", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+                else
+                {
+                    print(httpResponse.statusCode)
+                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Not Added To Refrigerator, Retry!" , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            
         })
         
         task.resume()
-        
-    }
-    
-    func parseJSON(_ data:Data)
-    {
-        
-        var jsonResult = NSArray()
-        
-      do{
-            
-            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            
-        } catch let error as NSError
-        {
-            print(error)
-        }
-        
-       print("Inside parse JSON")
-       print(jsonResult)
         
     }
     
