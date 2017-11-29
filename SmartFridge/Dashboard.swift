@@ -31,7 +31,8 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         itemTableView.delegate = self
         itemTableView.dataSource = self
         
-        
+        let preferences = UserDefaults.standard
+        print(preferences.object(forKey: "UserId") ?? "no UID")
         
        /*refreshControl.addTarget(self, action: #selector(fetchItemList), for: UIControlEvents.valueChanged)
        // itemTableView.subview(refreshControl)
