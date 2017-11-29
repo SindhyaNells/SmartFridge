@@ -18,7 +18,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     var FridgeItems = Array<FridgeItemsModel>()
     var Names = Array<String>()
     var ID = Array<Int>()
-    var id = Int()
+    var UserId = Int()
 
     
     override func viewDidLoad()
@@ -30,6 +30,8 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
 
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        
+        
         
        /*refreshControl.addTarget(self, action: #selector(fetchItemList), for: UIControlEvents.valueChanged)
        // itemTableView.subview(refreshControl)
@@ -43,6 +45,8 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     override func viewDidAppear(_ animated: Bool)
     {
         self.itemTableView.reloadData()
+        print("ID got from login")
+        print(UserId)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int

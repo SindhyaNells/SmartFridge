@@ -14,6 +14,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var GroceryTable: UITableView!
     
     var row = 0
+    
     var Names = Array<String>()
     var ID = Array<Int>()
     
@@ -45,7 +46,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 73
+        return 72
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -146,6 +147,8 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
             ID.append(GroceryItem.id ?? 1)
             
         }
+        print(Names)
+        print(ID)
     }
     
 

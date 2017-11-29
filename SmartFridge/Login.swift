@@ -13,6 +13,8 @@ class Login: UIViewController {
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    var userID = Int()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -34,35 +36,16 @@ class Login: UIViewController {
         
         let DNS = RestApiUrl ()
         
-        
-        /*let itemString = displayItem.text
-         
-         let name = itemString?.components(separatedBy: "\nQ").first
-         
-         let quantity = itemString?.components(separatedBy: "\nP").first
-         
-         let price = itemString?.components(separatedBy: "\nM").first
-         
-         let mfg = itemString?.components(separatedBy: "\nE").first
-         
-         let exp = itemString?.components(separatedBy: "\n").first
-         
-         print(name ?? "error")
-         print(quantity ?? "error")
-         print(price ?? "error")
-         print(mfg ?? "error")
-         print(exp ?? "error")*/
-        
         let username = usernameTextfield.text
         let password = passwordTextfield.text
         
         
         //POST Request to Add items to fridge
-        let params = ["Username":username, "Password":password] as! Dictionary<String,String>
+        let params = ["username":username, "password":password] as! Dictionary<String,String>
         
         //print(params)
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/addNewItem")!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/userCredentials/verify")!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -70,49 +53,85 @@ class Login: UIViewController {
         let session = URLSession.shared
         print("Printing response next")
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print( response ?? "Error connecting to Rest API - Add Items to fridge")
+            print( response ?? "Error connecting to Rest API - Verify user")
             if error != nil
             {
-                print("Failed to connect to Add Item API")
+                print("Failed to connect to verify user API")
                 print(error!)
             }
             else
             {
-                print("Connected to Add Item API")
+                print("Connected to Verify User API")
+                print(data ?? "data")
+                self.parseJSON(data!)
+                
             }
             
             if let httpResponse = response as? HTTPURLResponse
             {
                 if httpResponse.statusCode == 200
                 {
-                    print("Inserted!")
-                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Login successful", preferredStyle: .alert)
+                    print("Verified!")
+                    /*let alert = UIAlertController(title: "Smart Refrigerator", message: "Login successful", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)*/
+                    
+                    print("User ID")
+                    print(self.userID)
                     
                 }
                 else
                 {
                     print(httpResponse.statusCode)
-                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Not Added To Refrigerator, Retry!" , preferredStyle: .alert)
+                    /*let alert = UIAlertController(title: "Smart Refrigerator", message: "Verification Failed, Retry!" , preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)*/
                 }
             }
             
         })
         
         task.resume()
+        self.performSegue(withIdentifier: "checkLogin", sender: nil)
+    }
+    
+    func parseJSON(_ data:Data)
+    {
+        
+        var jsonResult = NSDictionary()
+        
+        do{
+            
+            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+            print(jsonResult)
+            
+        } catch let error as NSError
+        {
+            print(error)
+        }
+        
+        let UID = jsonResult["User ID"] as? Int
+        userID = UID!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "checkLogin"
         {
-            var dashboardSegue = segue.destination as? Dashboard
-            dashboardSegue?.id = 1
+            print("inside prepare for segue")
+            let dashboardSegue = segue.destination as? Dashboard
+            dashboardSegue?.UserId = userID
+            print(dashboardSegue?.UserId ?? 100)
         }
     }
+    
+    /*override func performSegue(withIdentifier identifier: String, sender: Any?)
+    {
+        let segue = UIStoryboardSegue
+        let dashboardSegue = segue.destination as? Dashboard
+        dashboardSegue?.id = userID
+     
+    }*/
     
 
 }
