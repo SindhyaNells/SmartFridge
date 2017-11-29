@@ -18,13 +18,17 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     var Names = Array<String>()
     var ID = Array<Int>()
     
+    var DeleteName = String ()
+    
     var GroceryItems = Array<GroceryItemModel>()
     
    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         fetchGroceryList()
+        
         GroceryTable.delegate = self
         GroceryTable.dataSource = self
     }
@@ -41,7 +45,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return row; //retun the number of items
+        return Names.count; //retun the number of items
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -69,7 +73,14 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let session = URLSession.shared
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 60.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        
+        
+        //let session = URLSession.shared
+        
+        let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in print( response ?? "Error connecting to Rest API - GET Grocery List")
             if error != nil
             {
@@ -152,5 +163,94 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
 
+    func tableView(_ tableView: UITableView, canEditRowAtindexPath indexPath: NSIndexPath!) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if (editingStyle == UITableViewCellEditingStyle.delete)
+        {
+            
+            print(Names[indexPath.row])
+            DeleteName = Names[indexPath.row]
+            deleteItem(ItemName: DeleteName)
+            
+            Names.remove(at: indexPath.row)
+            ID.remove(at: indexPath.row)
+            GroceryTable.reloadData()
+        }
+    }
+    
+    func deleteItem(ItemName : String)
+    {
+        print("Inside delete fridge item")
+        
+        
+        let DNS = RestApiUrl()
+        
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/groceryList/delete/1/"+ItemName)!)
+        request.httpMethod = "DELETE"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 60.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        
+        
+        //let session = URLSession.shared
+        
+        let session = URLSession(configuration: sessionConfig)
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in print( response ?? "Error connecting to Rest API - Delete Items from fridge")
+            
+            if error != nil
+            {
+                print("Failed to connect to Delete Item API")
+                print(error!)
+            }
+            else
+            {
+                print("Response obtained")
+                
+                self.parse(data!)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse
+            {
+                if httpResponse.statusCode == 200
+                {
+                    print("Deleted Item")
+                    
+                }
+                else
+                {
+                    print(httpResponse.statusCode)
+                    print("Failed to items")
+                }
+            }
+        })
+        
+        task.resume()
+    }
+    
+    func parse(_ data:Data)
+    {
+        var jsonResult = NSDictionary()
+        
+        do{
+            
+            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+            print(jsonResult)
+            
+        } catch let error as NSError
+        {
+            print(error)
+        }
+        
+        let responseString = jsonResult["string"] as? String
+        print(responseString ?? "No string")
+    }
 
 }

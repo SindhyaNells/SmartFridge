@@ -19,6 +19,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     var Names = Array<String>()
     var ID = Array<Int>()
     var UserId = Int()
+    var DeleteID = Int()
 
     
     override func viewDidLoad()
@@ -184,10 +185,14 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     {
         if (editingStyle == UITableViewCellEditingStyle.delete)
         {
-            //Names.remove(at: indexPath.row)
-            //ID.remove(at: indexPath.row)
+            
             print(Names[indexPath.row])
             print(ID[indexPath.row])
+            DeleteID = ID[indexPath.row]
+            deleteItem(ItemID: DeleteID)
+            
+            Names.remove(at: indexPath.row)
+            ID.remove(at: indexPath.row)
             itemTableView.reloadData()
         }
     }
@@ -200,8 +205,80 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     
     @IBAction func Reload(_ sender: UIButton)
     {
+        Names = Array<String>()
+        ID = Array<Int>()
         fetchItemList()
-        itemTableView.reloadData()
+       // itemTableView.reloadData()
+    }
+    
+    func deleteItem(ItemID : Int)
+    {
+        print("Inside delete fridge item")
+        
+        let strID = String(ItemID)
+        let DNS = RestApiUrl()
+        
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/delete/2/"+strID)!)
+        request.httpMethod = "DELETE"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 60.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        
+        
+        //let session = URLSession.shared
+        
+        let session = URLSession(configuration: sessionConfig)
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in print( response ?? "Error connecting to Rest API - Delete Items from fridge")
+            
+            if error != nil
+            {
+                print("Failed to connect to Delete Item API")
+                print(error!)
+            }
+            else
+            {
+                print("Response obtained")
+                
+                self.parse(data!)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse
+            {
+                if httpResponse.statusCode == 200
+                {
+                    print("Deleted Item")
+                    
+                }
+                else
+                {
+                    print(httpResponse.statusCode)
+                    print("Failed to items")
+                }
+            }
+        })
+        
+        task.resume()
+    }
+    
+    func parse(_ data:Data)
+    {
+        var jsonResult = NSDictionary()
+        
+        do{
+            
+            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+            print(jsonResult)
+            
+        } catch let error as NSError
+        {
+            print(error)
+        }
+        
+        let responseString = jsonResult["string"] as? String
+        print(responseString ?? "No string")
     }
     
 }

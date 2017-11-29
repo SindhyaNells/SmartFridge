@@ -143,7 +143,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
          print(mfg ?? "error")
          print(exp ?? "error")*/
         
-        let name = "Tomato"
+        let name = "Jam"
         let quantity = "1"
         let price = "5.99"
         let mfg = "10/10/2017 12:00:00"
