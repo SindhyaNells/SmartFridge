@@ -13,6 +13,7 @@ class DashboardTableViewCell: UITableViewCell {
     @IBOutlet weak var itemCellView: UIView!
     
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var itemIDLabel: UILabel!
     
     @IBOutlet weak var itemImage: UIImageView!
     

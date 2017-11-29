@@ -17,7 +17,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
     
     @IBOutlet weak var square: UIImageView!
     
-    @IBOutlet weak var displayItem: UILabel!
+   
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -79,6 +79,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         avCaptureSession.addOutput(avCaptureMetadataOutput)
         
         avCaptureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+        //avCaptureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.face]
         
         avCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: avCaptureSession)
         avCaptureVideoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -103,12 +104,12 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
             {
                 
                 let alert = UIAlertController(title: "Item Scanned", message: machineReadableCode.stringValue, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in self.SaveToFridge()}))
                 /*alert.addAction(UIAlertAction(title: "", style: .default, handler: {(nil)in UIPasteboard.general.string = machineReadableCode.stringValue
                 }))*/
                 present(alert, animated: true, completion: nil)
                 scannedString = machineReadableCode.stringValue!
-                displayItem.text = scannedString;
+                
                 print(scannedString)
                 
             }
@@ -116,7 +117,87 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         
     }
     
-    @IBAction func AddToFridge(_ sender: UIButton)
+    func SaveToFridge()
+    {
+        print("From add to fridge function" )
+        
+        
+        let DNS = RestApiUrl ()
+        
+        
+        /*let itemString = displayItem.text
+         
+         let name = itemString?.components(separatedBy: "\nQ").first
+         
+         let quantity = itemString?.components(separatedBy: "\nP").first
+         
+         let price = itemString?.components(separatedBy: "\nM").first
+         
+         let mfg = itemString?.components(separatedBy: "\nE").first
+         
+         let exp = itemString?.components(separatedBy: "\n").first
+         
+         print(name ?? "error")
+         print(quantity ?? "error")
+         print(price ?? "error")
+         print(mfg ?? "error")
+         print(exp ?? "error")*/
+        
+        let name = "Tomato"
+        let quantity = "1"
+        let price = "5.99"
+        let mfg = "10/10/2017 12:00:00"
+        let exp = "12/10/2017 12:00:00"
+        
+        //POST Request to Add items to fridge
+        let params = ["userId":"2", "name":name,"quantity": quantity,"price": price, "mfgDate":mfg, "expDate":exp, "status":"ispresent", "addedDate":"12/1/2017 12:00:00"] as Dictionary<String,String>
+        
+        //print(params)
+        
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/addNewItem")!)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        print("Printing response next")
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print( response ?? "Error connecting to Rest API - Add Items to fridge")
+            if error != nil
+            {
+                print("Failed to connect to Add Item API")
+                print(error!)
+            }
+            else
+            {
+                print("Connected to Add Item API")
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse
+            {
+                if httpResponse.statusCode == 200
+                {
+                    print("Inserted!")
+                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Added To Refrigerator", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+                else
+                {
+                    print(httpResponse.statusCode)
+                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Not Added To Refrigerator, Retry!" , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+        })
+        
+        task.resume()
+    }
+    
+    /*@IBAction func AddToFridge(_ sender: UIButton)
     {
         //let items = FridgeItemsModel ()
         print("From add to fridge function" )
@@ -196,7 +277,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         
         task.resume()
         
-    }
+    }*/
     
     
 }

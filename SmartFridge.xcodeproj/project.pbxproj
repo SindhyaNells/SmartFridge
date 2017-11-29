@@ -9,7 +9,13 @@
 /* Begin PBXBuildFile section */
 		D8118DBD1FABA1DA00294556 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8118DBC1FABA1DA00294556 /* Images.xcassets */; };
 		D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */; };
+		D8472A1B1FB62E880099A882 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8472A1A1FB62E880099A882 /* SignUp.swift */; };
+		D86AA7B11FCD215400EBE265 /* GroceryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86AA7B01FCD215400EBE265 /* GroceryListTableViewCell.swift */; };
+		D86AA7B31FCD216D00EBE265 /* GroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86AA7B21FCD216D00EBE265 /* GroceryList.swift */; };
 		D897D7511FB26E590088E767 /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D897D7501FB26E590088E767 /* DashboardTableViewCell.swift */; };
+		D89980E81FCDE56400B5E0B4 /* GroceryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89980E71FCDE56400B5E0B4 /* GroceryListModel.swift */; };
+		D8AD88C21FCE6C2100D8D881 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AD88C11FCE6C2100D8D881 /* Profile.swift */; };
+		D8B3C2481FC2A68A0068BCF2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B3C2471FC2A68A0068BCF2 /* Login.swift */; };
 		D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FC91FB2717B006AC73A /* Dashboard.swift */; };
 		D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */; };
 		D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75231FABF0A600FCE0EC /* HomeModel.swift */; };
@@ -23,7 +29,13 @@
 /* Begin PBXFileReference section */
 		D8118DBC1FABA1DA00294556 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D8118DBE1FABAE4E00294556 /* QRCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
+		D8472A1A1FB62E880099A882 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		D86AA7B01FCD215400EBE265 /* GroceryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewCell.swift; sourceTree = "<group>"; };
+		D86AA7B21FCD216D00EBE265 /* GroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryList.swift; sourceTree = "<group>"; };
 		D897D7501FB26E590088E767 /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
+		D89980E71FCDE56400B5E0B4 /* GroceryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListModel.swift; sourceTree = "<group>"; };
+		D8AD88C11FCE6C2100D8D881 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		D8B3C2471FC2A68A0068BCF2 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D8E41FC91FB2717B006AC73A /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiUrl.swift; sourceTree = "<group>"; };
 		D8FF75231FABF0A600FCE0EC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -78,6 +90,12 @@
 				D897D7501FB26E590088E767 /* DashboardTableViewCell.swift */,
 				D8E41FC91FB2717B006AC73A /* Dashboard.swift */,
 				D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */,
+				D8472A1A1FB62E880099A882 /* SignUp.swift */,
+				D8B3C2471FC2A68A0068BCF2 /* Login.swift */,
+				D86AA7B01FCD215400EBE265 /* GroceryListTableViewCell.swift */,
+				D86AA7B21FCD216D00EBE265 /* GroceryList.swift */,
+				D89980E71FCDE56400B5E0B4 /* GroceryListModel.swift */,
+				D8AD88C11FCE6C2100D8D881 /* Profile.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -154,13 +172,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86AA7B11FCD215400EBE265 /* GroceryListTableViewCell.swift in Sources */,
 				D897D7511FB26E590088E767 /* DashboardTableViewCell.swift in Sources */,
+				D8B3C2481FC2A68A0068BCF2 /* Login.swift in Sources */,
+				D8AD88C21FCE6C2100D8D881 /* Profile.swift in Sources */,
 				D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */,
 				E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */,
 				D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */,
 				E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */,
+				D89980E81FCDE56400B5E0B4 /* GroceryListModel.swift in Sources */,
+				D86AA7B31FCD216D00EBE265 /* GroceryList.swift in Sources */,
 				D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */,
 				D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */,
+				D8472A1B1FB62E880099A882 /* SignUp.swift in Sources */,
 				D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,8 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     var row = 0
     var FridgeItems = Array<FridgeItemsModel>()
     var Names = Array<String>()
+    var ID = Array<Int>()
+    var id = Int()
 
     
     override func viewDidLoad()
@@ -29,8 +31,11 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         itemTableView.delegate = self
         itemTableView.dataSource = self
         
-        /*refreshControl.addTarget(self, action: #selector(refreshItemList(_:)), for: .valueChanged)
-        itemTableView.refreshControl = refreshControl*/
+       /*refreshControl.addTarget(self, action: #selector(fetchItemList), for: UIControlEvents.valueChanged)
+       // itemTableView.subview(refreshControl)
+       itemTableView.refreshControl = refreshControl
+        */
+        
     }
     
    
@@ -42,30 +47,32 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return row; //retun the number of items
+        return Names.count; //retun the number of items
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 100
+        return 72
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemDisplay") as! DashboardTableViewCell
         print(Names)
+        row = Names.count
         cell.itemLabel.text = Names[indexPath.row]
         cell.itemImage.image = UIImage(named: Names[indexPath.row])
+        cell.itemIDLabel.text = String(ID[indexPath.row])
         return cell
     }
     
-    func fetchItemList()
+    @objc func fetchItemList()
     {
         print("Inside fetch list")
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/fridgeItems/3")!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/fridgeItems/2")!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -75,7 +82,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
             
             if error != nil
             {
-                print("Failed to connect to Add Item API")
+                print("Failed to connect to Fetch Item API")
                 print(error!)
             }
             else
@@ -115,7 +122,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         do{
             
             jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            //print(jsonResult)
+            print(jsonResult)
             
         } catch let error as NSError
         {
@@ -141,19 +148,44 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
             let ExpDate = jsonElement["EXPDate"] as? Date
             let Quantity = jsonElement["Quantity"] as? Float
             let Price = jsonElement["Price"] as? Float
+            let ItemID = jsonElement["Item_Id"] as? Int
+            
             
                 FridgeItem.name = name
                 FridgeItem.MfgDate = MfgDate
                 FridgeItem.ExpDate = ExpDate
                 FridgeItem.quantity = Quantity
                 FridgeItem.price = Price
+                FridgeItem.ID = ItemID
             
             FridgeItems.append(FridgeItem)
             Names.append(FridgeItem.name ?? "Item")
+            ID.append(FridgeItem.ID ?? 1)
             
         }
+        
+        /*if self.refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }*/
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAtindexPath indexPath: NSIndexPath!) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if (editingStyle == UITableViewCellEditingStyle.delete)
+        {
+            //Names.remove(at: indexPath.row)
+            //ID.remove(at: indexPath.row)
+            print(Names[indexPath.row])
+            print(ID[indexPath.row])
+            itemTableView.reloadData()
+        }
+    }
     
     /*@objc private func refreshItemList(_ sender: Any)
     {
@@ -161,5 +193,10 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     }*/
     
     
+    @IBAction func Reload(_ sender: UIButton)
+    {
+        fetchItemList()
+        itemTableView.reloadData()
+    }
     
 }

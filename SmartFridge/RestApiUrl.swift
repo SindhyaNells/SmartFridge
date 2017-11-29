@@ -10,5 +10,5 @@ import Foundation
 
 public class RestApiUrl
 {
-    let aws = "http://ec2-52-37-24-124.us-west-2.compute.amazonaws.com:8080"
+    let aws = "http://ec2-34-212-123-141.us-west-2.compute.amazonaws.com:8080"
 }
