@@ -462,15 +462,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPM-sC-y2q">
-                                <rect key="frame" x="282" y="41" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="Edit:" destination="X61-3r-z90" eventType="touchUpInside" id="Mux-E8-4Qs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNN-Nz-SQf">
                                 <rect key="frame" x="129" y="534" width="117" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -481,6 +472,15 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="Save:" destination="X61-3r-z90" eventType="touchUpInside" id="4HS-8A-GJP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPM-sC-y2q">
+                                <rect key="frame" x="282" y="64" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="Edit:" destination="X61-3r-z90" eventType="touchUpInside" id="Mux-E8-4Qs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -797,5 +797,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="Um3-bQ-Ybq"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.9861351612" green="0.9896013709" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+    <color key="tintColor" red="0.7490348219871521" green="0.91633611917495728" blue="0.56490427255630493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
