@@ -18,6 +18,7 @@
 		D8B3C2481FC2A68A0068BCF2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B3C2471FC2A68A0068BCF2 /* Login.swift */; };
 		D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FC91FB2717B006AC73A /* Dashboard.swift */; };
 		D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */; };
+		D8E48BFF1FCF8343008E66C9 /* AddToGroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */; };
 		D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75231FABF0A600FCE0EC /* HomeModel.swift */; };
 		D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */; };
 		E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D71FA50521008A2D22 /* AppDelegate.swift */; };
@@ -38,6 +39,8 @@
 		D8B3C2471FC2A68A0068BCF2 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		D8E41FC91FB2717B006AC73A /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiUrl.swift; sourceTree = "<group>"; };
+		D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToGroceryList.swift; sourceTree = "<group>"; };
+		D8E48C001FCF8A31008E66C9 /* SmartFridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartFridge.entitlements; sourceTree = "<group>"; };
 		D8FF75231FABF0A600FCE0EC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeItemsModel.swift; sourceTree = "<group>"; };
 		E63FD6D41FA50521008A2D22 /* SmartFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +81,7 @@
 		E63FD6D61FA50521008A2D22 /* SmartFridge */ = {
 			isa = PBXGroup;
 			children = (
+				D8E48C001FCF8A31008E66C9 /* SmartFridge.entitlements */,
 				E63FD6D71FA50521008A2D22 /* AppDelegate.swift */,
 				E63FD6D91FA50521008A2D22 /* ViewController.swift */,
 				E63FD6DB1FA50521008A2D22 /* Main.storyboard */,
@@ -96,6 +100,7 @@
 				D86AA7B21FCD216D00EBE265 /* GroceryList.swift */,
 				D89980E71FCDE56400B5E0B4 /* GroceryListModel.swift */,
 				D8AD88C11FCE6C2100D8D881 /* Profile.swift */,
+				D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -133,6 +138,11 @@
 					E63FD6D31FA50521008A2D22 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -185,6 +195,7 @@
 				D86AA7B31FCD216D00EBE265 /* GroceryList.swift in Sources */,
 				D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */,
 				D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */,
+				D8E48BFF1FCF8343008E66C9 /* AddToGroceryList.swift in Sources */,
 				D8472A1B1FB62E880099A882 /* SignUp.swift in Sources */,
 				D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */,
 			);
@@ -323,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SmartFridge/SmartFridge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
@@ -339,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SmartFridge/SmartFridge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;

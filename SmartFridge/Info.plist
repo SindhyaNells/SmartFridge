@@ -25,6 +25,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition will be used to determine the words you speak</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Your microphone will be used to record your speech</string>
 	<key>NSCameraUsageDescription</key>
 	<string>The camera is needed to Scan QR code</string>
 	<key>UILaunchStoryboardName</key>
