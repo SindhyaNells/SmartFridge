@@ -208,7 +208,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         Names = Array<String>()
         ID = Array<Int>()
         fetchItemList()
-       // itemTableView.reloadData()
+        //itemTableView.reloadData()
     }
     
     func deleteItem(ItemID : Int)

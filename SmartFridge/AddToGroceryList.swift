@@ -84,7 +84,55 @@ class AddToGroceryList: UIViewController, SFSpeechRecognizerDelegate
     
     @IBAction func SaveItem(_ sender: UIButton)
     {
+        print("Inside save item")
+        print(speechFinal)
         
+        let DNS = RestApiUrl ()
+        
+        let params = ["UserId":"2", "FoodItemName":speechFinal,"Count": "3"] as Dictionary<String,String>
+        
+        
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/groceryList/addGroceryListItem")!)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        print("Printing response next")
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print( response ?? "Error connecting to Rest API - Add Items to Grocery list")
+            if error != nil
+            {
+                print("Failed to connect to Add Item Grocery list API")
+                print(error!)
+            }
+            else
+            {
+                print("Connected to Add Grocery list Item API")
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse
+            {
+                if httpResponse.statusCode == 200
+                {
+                    print("Inserted!")
+                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Added To Refrigerator", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+                else
+                {
+                    print(httpResponse.statusCode)
+                    let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Not Added To Refrigerator, Retry!" , preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            
+        })
+        
+        task.resume()
     }
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
@@ -157,7 +205,7 @@ class AddToGroceryList: UIViewController, SFSpeechRecognizerDelegate
         
         try audioEngine.start()
         
-        DisplayItemName.text = "(Go ahead, I'm listening)"
+        DisplayItemName.text = "(Go ahead, We're listening)"
     }
     
     

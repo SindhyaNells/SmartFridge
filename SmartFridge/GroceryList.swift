@@ -37,7 +37,10 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     {
         super.didReceiveMemoryWarning()
     }
-    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        //fetchGroceryList()
+    }
     override func viewDidAppear(_ animated: Bool)
     {
         self.GroceryTable.reloadData()
