@@ -26,6 +26,8 @@ class AddToGroceryList: UIViewController, SFSpeechRecognizerDelegate
     
     var speechFinal = String("")
     
+    var str = String("")
+    
     @IBOutlet weak var recordButton: UIButton!
     
     override func viewDidLoad()
@@ -87,9 +89,13 @@ class AddToGroceryList: UIViewController, SFSpeechRecognizerDelegate
         print("Inside save item")
         print(speechFinal)
         
+        str = DisplayItemName.text ?? "Dummy"
+        
+        DisplayItemName.endEditing(true)
+        
         let DNS = RestApiUrl ()
         
-        let params = ["UserId":"2", "FoodItemName":speechFinal,"Count": "3"] as Dictionary<String,String>
+        let params = ["UserId":"1", "FoodItemName":str,"Count": "3"] as Dictionary<String,String>
         
         
         var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/groceryList/addGroceryListItem")!)

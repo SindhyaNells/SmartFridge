@@ -56,7 +56,7 @@ class Profile: UIViewController {
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/profileDetails/2")!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/profileDetails/1")!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

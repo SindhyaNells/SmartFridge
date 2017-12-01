@@ -263,5 +263,13 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         let responseString = jsonResult["string"] as? String
         print(responseString ?? "No string")
     }
-
+    
+    
+    @IBAction func Refresh(_ sender: UIButton)
+    {
+        Names = Array<String>()
+        ID = Array<Int>()
+        fetchGroceryList()
+    }
+    
 }

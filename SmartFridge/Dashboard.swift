@@ -78,7 +78,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/fridgeItems/2")!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/fridgeItems/1")!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -218,7 +218,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         let strID = String(ItemID)
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/delete/2/"+strID)!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/delete/1/"+strID)!)
         request.httpMethod = "DELETE"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

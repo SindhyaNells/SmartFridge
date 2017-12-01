@@ -108,7 +108,7 @@
                                                             <color key="textColor" red="0.7490348219871521" green="0.91633611917495728" blue="0.56490427255630493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grocery" translatesAutoresizingMaskIntoConstraints="NO" id="SH8-9e-vbG">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basket" translatesAutoresizingMaskIntoConstraints="NO" id="SH8-9e-vbG">
                                                             <rect key="frame" x="8" y="4" width="54" height="52"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -136,6 +136,9 @@
                                 <rect key="frame" x="299" y="102" width="60" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="refresh"/>
+                                <connections>
+                                    <action selector="Refresh:" destination="gs1-wB-RTg" eventType="touchUpInside" id="pKh-Km-Cpt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -810,9 +813,9 @@
     <resources>
         <image name="account" width="32" height="32"/>
         <image name="barcode" width="32" height="32"/>
+        <image name="basket" width="64" height="64"/>
         <image name="dashboard" width="32" height="32"/>
         <image name="groceries" width="32" height="32"/>
-        <image name="grocery" width="32" height="32"/>
         <image name="microphone" width="32" height="32"/>
         <image name="nutrition" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
