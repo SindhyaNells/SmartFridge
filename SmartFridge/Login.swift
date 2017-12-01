@@ -81,7 +81,10 @@ class Login: UIViewController {
                     
                     DispatchQueue.main.async
                     {
-                        //let defauilts = 'NSUserDefaults'.standardUser
+                        
+                        let defaults = UserDefaults.standard
+                        defaults.set(self.userID,forKey: "UserId")
+                        defaults.synchronize()
                         self.performSegue(withIdentifier: "checkLogin", sender: nil)
                     }
                     
