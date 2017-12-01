@@ -23,11 +23,11 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     var CNames = Array<String>()
     var CID = Array<Int>()*/
     
-    var Names = ["abc","xyz","asd","abc","xyz","asd"]
-    var ID = [1,2,3,4,5,6]
+    var Names = ["Apple","Bread","Corn"]
+    var ID = [1,2,3]
     
-    var CNames = ["cabc","cxyz","casd","abc","xyz","asd"]
-    var CID = [1,2,3,5,6,7]
+    var CNames = ["Chocolate"]
+    var CID = [1]
     
     
     var DeleteName = String ()
@@ -38,6 +38,9 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        let preferences = UserDefaults.standard
+        print(preferences.object(forKey: "UserId") ?? "no UID")
         
         GroceryTable.delegate = self
         GroceryTable.dataSource = self
