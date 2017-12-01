@@ -79,6 +79,12 @@ class Login: UIViewController {
                     print("User ID")
                     print(self.userID)
                     
+                    DispatchQueue.main.async
+                    {
+                        //let defauilts = 'NSUserDefaults'.standardUser
+                        self.performSegue(withIdentifier: "checkLogin", sender: nil)
+                    }
+                    
                 }
                 else
                 {

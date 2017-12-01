@@ -13,7 +13,7 @@ class GroceryItemModel: NSObject
     var name: String?
     var id: Int?
     var uid: Int?
-    var count: Int?
+    var type: String?
     
     override init()
     {
@@ -22,13 +22,13 @@ class GroceryItemModel: NSObject
     
     //construct with parameters
     
-    init(name: String, id: Int, uid: Int, count: Int)
+    init(name: String, id: Int, uid: Int, type: String)
     {
         
         self.name = name
         self.id = id
         self.uid = uid
-        self.count = count
+        self.type = type
         
     }
 }
