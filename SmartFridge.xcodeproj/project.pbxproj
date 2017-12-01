@@ -19,6 +19,7 @@
 		D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FC91FB2717B006AC73A /* Dashboard.swift */; };
 		D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */; };
 		D8E48BFF1FCF8343008E66C9 /* AddToGroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */; };
+		D8FC718F1FD1FE2A003F6C03 /* CustomGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */; };
 		D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75231FABF0A600FCE0EC /* HomeModel.swift */; };
 		D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */; };
 		E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D71FA50521008A2D22 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiUrl.swift; sourceTree = "<group>"; };
 		D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToGroceryList.swift; sourceTree = "<group>"; };
 		D8E48C001FCF8A31008E66C9 /* SmartFridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartFridge.entitlements; sourceTree = "<group>"; };
+		D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroceryListCell.swift; sourceTree = "<group>"; };
 		D8FF75231FABF0A600FCE0EC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeItemsModel.swift; sourceTree = "<group>"; };
 		E63FD6D41FA50521008A2D22 /* SmartFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				D89980E71FCDE56400B5E0B4 /* GroceryListModel.swift */,
 				D8AD88C11FCE6C2100D8D881 /* Profile.swift */,
 				D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */,
+				D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */,
 				D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */,
 				E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */,
+				D8FC718F1FD1FE2A003F6C03 /* CustomGroceryListCell.swift in Sources */,
 				D89980E81FCDE56400B5E0B4 /* GroceryListModel.swift in Sources */,
 				D86AA7B31FCD216D00EBE265 /* GroceryList.swift in Sources */,
 				D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */,

@@ -35,18 +35,13 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         let preferences = UserDefaults.standard
         print(preferences.object(forKey: "UserId") ?? "no UID")
         
-       /*refreshControl.addTarget(self, action: #selector(fetchItemList), for: UIControlEvents.valueChanged)
-       // itemTableView.subview(refreshControl)
-       itemTableView.refreshControl = refreshControl
-        */
-        
     }
     
    
     
     override func viewDidAppear(_ animated: Bool)
     {
-        self.itemTableView.reloadData()
+        //self.itemTableView.reloadData()
         print("ID got from login")
         print(UserId)
     }
@@ -111,12 +106,14 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
                     print("Failed to retrive data")
                 }
             }
+            
+            DispatchQueue.main.async
+                {
+                    self.itemTableView.reloadData()
+            }
         })
         
         task.resume()
-        
-        /*self.viewDidLoad()
-        self.refreshControl.endRefreshing()*/
         
     }
     
@@ -196,11 +193,6 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
             itemTableView.reloadData()
         }
     }
-    
-    /*@objc private func refreshItemList(_ sender: Any)
-    {
-        fetchItemList()
-    }*/
     
     
     @IBAction func Reload(_ sender: UIButton)
