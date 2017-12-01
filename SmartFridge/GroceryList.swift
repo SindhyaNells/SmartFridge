@@ -27,10 +27,11 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     {
         super.viewDidLoad()
         
-        fetchGroceryList()
-        
         GroceryTable.delegate = self
         GroceryTable.dataSource = self
+        
+        
+        fetchGroceryList()
     }
 
     override func didReceiveMemoryWarning()
@@ -43,7 +44,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     override func viewDidAppear(_ animated: Bool)
     {
-        self.GroceryTable.reloadData()
+        //self.GroceryTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -102,6 +103,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
                 if httpResponse.statusCode == 200
                 {
                     print("Retrived grocery list")
+                    //self.GroceryTable.reloadData()
                     
                 }
                 else
@@ -109,6 +111,11 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
                     print(httpResponse.statusCode)
                     print("Failed to retrive grocery list")
                 }
+            }
+            
+            DispatchQueue.main.async
+            {
+                self.GroceryTable.reloadData()
             }
         })
         
@@ -163,6 +170,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         print(Names)
         print(ID)
+        //self.GroceryTable.reloadData()
     }
     
 

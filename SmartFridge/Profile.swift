@@ -41,16 +41,14 @@ class Profile: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
-    
-    override func viewDidAppear(_ animated: Bool)
+
+    func loadData()
     {
-        
         Fname.text = FirstName
         Lname.text = Lastname
         Email.text = EmailId
         Uname.text = Username
     }
-    
     
     func displayProfile()
     {
@@ -94,6 +92,11 @@ class Profile: UIViewController {
                     print(httpResponse.statusCode)
                     print("Failed to retrive profile")
                 }
+            }
+            
+            DispatchQueue.main.async
+            {
+                    self.loadData()
             }
         })
         
