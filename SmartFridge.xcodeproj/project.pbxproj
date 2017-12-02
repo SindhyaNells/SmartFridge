@@ -26,6 +26,9 @@
 		E63FD6DA1FA50521008A2D22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63FD6D91FA50521008A2D22 /* ViewController.swift */; };
 		E63FD6DD1FA50521008A2D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63FD6DB1FA50521008A2D22 /* Main.storyboard */; };
 		E63FD6E21FA50521008A2D22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63FD6E01FA50521008A2D22 /* LaunchScreen.storyboard */; };
+		FE0E3EBE1FD2253400CC1E63 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3EBD1FD2253400CC1E63 /* LocationController.swift */; };
+		FE0E3EC11FD2259100CC1E63 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0E3EC01FD2258A00CC1E63 /* MapKit.framework */; };
+		FE0E3EC31FD2330500CC1E63 /* GroceryPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		E63FD6DC1FA50521008A2D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E63FD6E11FA50521008A2D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E63FD6E31FA50521008A2D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE0E3EBD1FD2253400CC1E63 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		FE0E3EC01FD2258A00CC1E63 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryPlaces.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0E3EC11FD2259100CC1E63 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +76,7 @@
 			children = (
 				E63FD6D61FA50521008A2D22 /* SmartFridge */,
 				E63FD6D51FA50521008A2D22 /* Products */,
+				FE0E3EBF1FD2258A00CC1E63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,8 +112,18 @@
 				D8AD88C11FCE6C2100D8D881 /* Profile.swift */,
 				D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */,
 				D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */,
+				FE0E3EBD1FD2253400CC1E63 /* LocationController.swift */,
+				FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */,
 			);
 			path = SmartFridge;
+			sourceTree = "<group>";
+		};
+		FE0E3EBF1FD2258A00CC1E63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE0E3EC01FD2258A00CC1E63 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,12 +216,14 @@
 				D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */,
 				E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */,
 				D8FC718F1FD1FE2A003F6C03 /* CustomGroceryListCell.swift in Sources */,
+				FE0E3EC31FD2330500CC1E63 /* GroceryPlaces.swift in Sources */,
 				D89980E81FCDE56400B5E0B4 /* GroceryListModel.swift in Sources */,
 				D86AA7B31FCD216D00EBE265 /* GroceryList.swift in Sources */,
 				D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */,
 				D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */,
 				D8E48BFF1FCF8343008E66C9 /* AddToGroceryList.swift in Sources */,
 				D8472A1B1FB62E880099A882 /* SignUp.swift in Sources */,
+				FE0E3EBE1FD2253400CC1E63 /* LocationController.swift in Sources */,
 				D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
