@@ -109,15 +109,22 @@ class SignUp: UIViewController
                 {
                     
                     self.showAlert(title: "Register", message: "User registered successfully")
-                    let defaults = UserDefaults.standard
+                    /*let defaults = UserDefaults.standard
                     
                     defaults.set(self.getUserId(data!), forKey: "UserId")
-                    defaults.synchronize()
+                    defaults.synchronize()*/
                     
                     self.clearFields()
                     
-                    DispatchQueue.main.async{
+                    /*DispatchQueue.main.async{
                         self.performSegue(withIdentifier: "checkSignUp", sender: nil)
+                    }*/
+                    DispatchQueue.main.async
+                        {
+                            let defaults = UserDefaults.standard
+                            defaults.set(self.getUserId(data!),forKey: "UserId")
+                            defaults.synchronize()
+                            self.performSegue(withIdentifier: "checkLogin", sender: nil)
                     }
                 }
                 else

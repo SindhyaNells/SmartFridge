@@ -18,7 +18,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     var FridgeItems = Array<FridgeItemsModel>()
     var Names = Array<String>()
     var ID = Array<Int>()
-    var UserId = Int()
+    var UserID = String()
     var DeleteID = Int()
 
     
@@ -27,13 +27,19 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         
         super.viewDidLoad()
         
+        let preferences = UserDefaults.standard
+        print("User id from defaults")
+        print(preferences.object(forKey: "UserId") ?? "no UID")
+        UserID = preferences.object(forKey: "UserId") as! String
+        
         fetchItemList()
 
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        //itemTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         
-        let preferences = UserDefaults.standard
-        print(preferences.object(forKey: "UserId") ?? "no UID")
+        //cell.backgroundView = UIImageView(image: UIImage(named: "background.jpg")!)
+        
         
     }
     
@@ -42,8 +48,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     override func viewDidAppear(_ animated: Bool)
     {
         //self.itemTableView.reloadData()
-        print("ID got from login")
-        print(UserId)
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -59,12 +64,32 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemDisplay") as! DashboardTableViewCell
+        
+        /*var imageView  = UIImageView(frame:CGRect(x: 0, y: 0, width: 100, height: 200))
+        
+        let image = UIImage(named: "background.png")
+        
+        cell.backgroundColor = UIColor.clear
+        
+        imageView = UIImageView(image:image)
+        
+        cell.backgroundView = imageView*/
+
         print(Names)
         row = Names.count
         cell.itemLabel.text = Names[indexPath.row]
         cell.itemImage.image = UIImage(named: Names[indexPath.row])
         cell.itemIDLabel.text = String(ID[indexPath.row])
+        //cell.backgroundView = UIImageView(image: UIImage(named: "background.jpg")!)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        print("Inside edit cell")
+        //cell.backgroundColor = UIColor.clear
+        print(cell)
+        cell.backgroundView = UIImageView(image: UIImage(named: "background.jpg")!)
     }
     
     @objc func fetchItemList()
@@ -73,7 +98,9 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/fridgeItems/1")!)
+        //print(DNS.aws + "/SmartFridgeBackend/user/fridgeItems/"+UserID)
+        
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/fridgeItems/"+UserID)!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -210,7 +237,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         let strID = String(ItemID)
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/delete/1/"+strID)!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/fridge/delete/"+UserID+"/"+strID)!)
         request.httpMethod = "DELETE"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
