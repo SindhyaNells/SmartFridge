@@ -26,9 +26,17 @@ class Profile: UIViewController {
     var Lastname = String()
     var FirstName = String()
     
+    var UserID = String()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        let preferences = UserDefaults.standard
+        print("User id from defaults")
+        print(preferences.object(forKey: "UserId") ?? "no UID")
+        UserID = preferences.object(forKey: "UserId") as! String
+        
         SaveButton.setTitleColor(UIColor.gray, for: .disabled)
         
         displayProfile()
@@ -56,7 +64,7 @@ class Profile: UIViewController {
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/profileDetails/1")!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/profileDetails/"+UserID)!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

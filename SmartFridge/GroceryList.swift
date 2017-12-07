@@ -17,18 +17,19 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var row = 0
     
-    /*var Names = Array<String>()
+    var Names = Array<String>()
     var ID = Array<Int>()
     
     var CNames = Array<String>()
-    var CID = Array<Int>()*/
+    var CID = Array<Int>()
     
-    var Names = ["Apple","Bread","Corn"]
+    /*var Names = ["Apple","Bread","Corn"]
     var ID = [1,2,3]
     
     var CNames = ["Chocolate"]
-    var CID = [1]
+    var CID = [1]*/
     
+    var UserID = String()
     
     var DeleteName = String ()
     
@@ -40,7 +41,11 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.viewDidLoad()
         
         let preferences = UserDefaults.standard
+        print("User id from defaults")
         print(preferences.object(forKey: "UserId") ?? "no UID")
+        UserID = preferences.object(forKey: "UserId") as! String
+        
+        fetchGroceryList()
         
         GroceryTable.delegate = self
         GroceryTable.dataSource = self
@@ -48,8 +53,6 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         CustomGroceryTable.delegate = self
         CustomGroceryTable.dataSource = self
         
-        
-        //fetchGroceryList()
     }
 
     override func didReceiveMemoryWarning()
@@ -73,6 +76,8 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         else if tableView == self.CustomGroceryTable
         {
+            print("Inside table row count")
+            print(CNames.count)
             return CNames.count
         }
         else
@@ -88,6 +93,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        //print(tableView)
         
         if tableView == self.GroceryTable
         {
@@ -97,24 +103,30 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
             cell.GroceryID.text = String(ID[indexPath.row])
             return cell
         }
-        else
+        else if tableView == self.CustomGroceryTable
         {
+            print("Inside else condition")
             let cell = CustomGroceryTable.dequeueReusableCell(withIdentifier: "CustomGroceryListCell") as! CustomGroceryListCell
             print(CNames)
             cell.CustomName.text = CNames[indexPath.row]
             cell.CustomID.text = String(CID[indexPath.row])
             return cell
         }
+        else
+        {
+            let cell = CustomGroceryTable.dequeueReusableCell(withIdentifier: "CustomGroceryListCell") as! CustomGroceryListCell
+            return cell
+        }
         
     }
-   /*
+   
     func fetchGroceryList()
     {
         print("Inside fetch grocery")
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/groceryList/1")!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/groceryList/"+UserID)!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -157,6 +169,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
             DispatchQueue.main.async
             {
                 self.GroceryTable.reloadData()
+                self.CustomGroceryTable.reloadData()
             }
         })
         
@@ -205,23 +218,23 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
             GroceryItem.type = type
             
             GroceryItems.append(GroceryItem)
-            if(GroceryItem.type == "Recommend")
+            if(GroceryItem.type == "Recommended")
             {
              Names.append(GroceryItem.name ?? "Item")
              ID.append(GroceryItem.id ?? 1)
             }
-            else
+            else if (GroceryItem.type == "Custom")
             {
                 CNames.append(GroceryItem.name ?? "Item")
                 CID.append(GroceryItem.id ?? 1)
             }
             
         }
-        print(Names)
+        /*print(Names)
         print(ID)
         
         print(CNames)
-        print(CID)
+        print(CID)*/
         //self.GroceryTable.reloadData()
     }
     
@@ -315,7 +328,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         let responseString = jsonResult["string"] as? String
         print(responseString ?? "No string")
     }
-    */
+    
     
     @IBAction func Refresh(_ sender: UIButton)
     {
@@ -325,7 +338,7 @@ class GroceryList: UIViewController,UITableViewDelegate,UITableViewDataSource
         CNames = Array<String>()
         CID = Array<Int>()
         
-        //fetchGroceryList()
+        fetchGroceryList()
     }
     
 }

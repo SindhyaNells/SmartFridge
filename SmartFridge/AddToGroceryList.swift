@@ -28,11 +28,19 @@ class AddToGroceryList: UIViewController, SFSpeechRecognizerDelegate
     
     var str = String("")
     
+    var UserID = String()
+    
     @IBOutlet weak var recordButton: UIButton!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        let preferences = UserDefaults.standard
+        print("User id from defaults")
+        print(preferences.object(forKey: "UserId") ?? "no UID")
+        UserID = preferences.object(forKey: "UserId") as! String
+        
         recordButton.isEnabled = false
     }
 
@@ -95,7 +103,7 @@ class AddToGroceryList: UIViewController, SFSpeechRecognizerDelegate
         
         let DNS = RestApiUrl ()
         
-        let params = ["UserId":"1", "FoodItemName":str,"Count": "3"] as Dictionary<String,String>
+        let params = ["UserId":UserID, "FoodItemName":str,"Type": "Custom"] as Dictionary<String,String>
         
         
         var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/groceryList/addGroceryListItem")!)

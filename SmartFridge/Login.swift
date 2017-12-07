@@ -19,7 +19,7 @@ class Login: UIViewController {
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +30,7 @@ class Login: UIViewController {
 
     @IBAction func loginButton(_ sender: UIButton)
     {
+        
         print("From log in function" )
         print(usernameTextfield.text ?? "username Error")
         print(passwordTextfield.text ?? "password Error")
@@ -79,11 +80,11 @@ class Login: UIViewController {
                     print("User ID")
                     print(self.userID)
                     
+                    
                     DispatchQueue.main.async
                     {
-                        
                         let defaults = UserDefaults.standard
-                        defaults.set(self.userID,forKey: "UserId")
+                        defaults.set(String(self.userID),forKey: "UserId")
                         defaults.synchronize()
                         self.performSegue(withIdentifier: "checkLogin", sender: nil)
                     }
@@ -101,8 +102,10 @@ class Login: UIViewController {
         })
         
         task.resume()
-        self.performSegue(withIdentifier: "checkLogin", sender: nil)
+        //self.performSegue(withIdentifier: "checkLogin", sender: nil)
     }
+    
+    
     
     func parseJSON(_ data:Data)
     {
@@ -123,7 +126,7 @@ class Login: UIViewController {
         userID = UID!
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "checkLogin"
         {
@@ -132,7 +135,7 @@ class Login: UIViewController {
             dashboardSegue?.UserId = userID
             print(dashboardSegue?.UserId ?? 100)
         }
-    }
+    }*/
     
     /*override func performSegue(withIdentifier identifier: String, sender: Any?)
     {
