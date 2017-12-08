@@ -19,6 +19,8 @@ class MLViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var classificationLabel: UILabel!
     
+    var recipeName :String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,6 +93,7 @@ class MLViewController: UIViewController {
                 }
                 self.classificationLabel.text = "Food Identified as : " + descriptions.joined(separator: "\n")
                 print(descriptions[0])
+                self.recipeName = descriptions[0]
             }
         }
     }
@@ -134,7 +137,14 @@ class MLViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destViewController = segue.destination as? Nutrition {
+            if segue.identifier == "nutrition" {
+                destViewController.recipeName = recipeName!
+            }
+        }
+    }
     
     
 
