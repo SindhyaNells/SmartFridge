@@ -185,7 +185,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
                 {
                     print("Inserted!")
                     let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Added To Refrigerator", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in self.gotoDashboard()} ))
                     self.present(alert, animated: true, completion: nil)
                     
                 }
@@ -193,7 +193,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
                 {
                     print(httpResponse.statusCode)
                     let alert = UIAlertController(title: "Smart Refrigerator", message: "Item Not Added To Refrigerator, Retry!" , preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in self.gotoDashboard()}))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -201,6 +201,11 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         })
         
         task.resume()
+    }
+    
+    func gotoDashboard()
+    {
+        self.performSegue(withIdentifier: "gotoDashboard", sender: nil)
     }
     
     

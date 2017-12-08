@@ -105,7 +105,12 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let session = URLSession.shared
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 60.0
+        sessionConfig.timeoutIntervalForResource = 60.0
+        
+        //let session = URLSession.shared
+        let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in print( response ?? "Error connecting to Rest API - GET Items from fridge")
             
             if error != nil
@@ -222,13 +227,13 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
     }
     
     
-    @IBAction func Reload(_ sender: UIButton)
+    /*@IBAction func Reload(_ sender: UIButton)
     {
         Names = Array<String>()
         ID = Array<Int>()
         fetchItemList()
         //itemTableView.reloadData()
-    }
+    }*/
     
     func deleteItem(ItemID : Int)
     {
