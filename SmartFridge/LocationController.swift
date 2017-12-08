@@ -13,6 +13,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var groceryPlaces = Array<GroceryPlaces>()
+    var clGeocoder = CLGeocoder()
     
     fileprivate var isCurrentLocation: Bool = false
     
@@ -27,7 +28,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
         
         if (CLLocationManager.locationServicesEnabled()) {
             //if locationManager == nil {
-               locationManager = CLLocationManager()
+            locationManager = CLLocationManager()
             //}
             locationManager.requestAlwaysAuthorization()
             locationManager.delegate = self as? CLLocationManagerDelegate
@@ -36,11 +37,14 @@ class LocationController: UIViewController,MKMapViewDelegate {
             locationManager.startUpdatingLocation()
             isCurrentLocation = true
         }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    
         getNearbyGroceryPlaces();
     
         
@@ -77,6 +81,48 @@ class LocationController: UIViewController,MKMapViewDelegate {
         mapView.addAnnotation(pointAnnotation)
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
+        print("Location manager failed with error = \(error)")
+    }
+    
+    func displayPlaces(places: Array<GroceryPlaces>) {
+        var i = 1
+        var coordinates: CLLocationCoordinate2D?
+        var placemark: CLPlacemark?
+        var annotation: Annotation?
+        var stations:Array = [Annotation]()
+        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+        
+        for address in places {
+            clGeocoder = CLGeocoder() //new geocoder
+            let lat = String(format:"%.2f", address.latitude!)
+            let long = String(format:"%.2f", address.longitude!)
+            
+            let location = CLLocation(latitude : Double(lat)!,longitude: Double(long)!)
+            clGeocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            //clGeocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+                if((error) != nil)  {
+                    print("Error", error!)
+                }
+                placemark = placemarks?.first
+                if placemark != nil {
+                    coordinates = placemark!.location!.coordinate
+                    points.append(coordinates!)
+                    print("locations = \(coordinates!.latitude) \(coordinates!.longitude)")
+                    annotation = Annotation(latitude: coordinates!.latitude, longitude: coordinates!.longitude, address: address.name!)
+                    stations.append(annotation!)
+                    print(stations.count)
+                    print(i)
+                    if (i == self.groceryPlaces.count) {
+                        print("Print map...")
+                        self.mapView.addAnnotations(stations)
+                    }
+                    i+=1
+                }
+            })
+        }
+    }
+    
     func getNearbyGroceryPlaces(){
         let placesURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.3352,-121.8811&radius=2000&type=grocery_or_supermarket&key=AIzaSyCQ7nzuqrkbFNf15vueqVljJixWo56jzRw"
         
@@ -97,6 +143,11 @@ class LocationController: UIViewController,MKMapViewDelegate {
             {
                 print("Data Obtained")
                 self.parseJSON(data!)
+                
+                DispatchQueue.main.async
+                {
+                    self.displayPlaces(places: self.groceryPlaces)
+                }
                 
             }
             
@@ -125,31 +176,31 @@ class LocationController: UIViewController,MKMapViewDelegate {
         //let groceryPlacesItem = GroceryPlaces()
         
         do {
-            //if let data = data,
+            
                 if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                 let results = json["results"] as? [[String: Any]] {
                 for res in results {
+                    
+                    let groceryItem = GroceryPlaces()
+                    
                     let googleGeo = res["geometry"] as! NSDictionary
                     let placeName = res["name"] as! String
                     let googleLoc = googleGeo["location"] as! NSDictionary
                     let latitude = googleLoc["lat"] as! Float
                     let longitude = googleLoc["lng"] as! Float
-                    //let geo = res["geometry"]as? [[String: Any]]
-                    //let loc = geo["location"] as? [[String: Any]]
-                    //if let lat = loc["latitude"] as? String {
-                        //names.append(name)
-                    print(placeName)
-                        print(latitude)
-                    print(longitude)
-                    //}
+                    
+                    groceryItem.name = placeName
+                    groceryItem.latitude = latitude
+                    groceryItem.longitude = longitude
+                    
+                    self.groceryPlaces.append(groceryItem)
+                
                 }
             }
         } catch {
             print("Error deserializing JSON: \(error)")
         }
-        
-        
-        
+    
     }
 
     /*
@@ -161,5 +212,21 @@ class LocationController: UIViewController,MKMapViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    class Annotation: NSObject, MKAnnotation {
+        var title: String?
+        var lat: Double
+        var long:Double
+        
+        var coordinate: CLLocationCoordinate2D {
+            return CLLocationCoordinate2D(latitude: lat, longitude: long)
+        }
+        
+        init(latitude: Double, longitude: Double, address: String) {
+            self.lat = latitude
+            self.long = longitude
+            self.title = address
+        }
+    }
 
 }

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -370,7 +369,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="arrow"/>
                                 <connections>
-                                    <segue destination="j6w-hm-DsX" kind="show" id="byH-BI-pT0"/>
+                                    <segue destination="j6w-hm-DsX" kind="show" identifier="nutrition" id="byH-BI-pT0"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NwC-Ne-atg">
@@ -424,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYp-aI-1Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="-1696"/>
+            <point key="canvasLocation" x="1033" y="23"/>
         </scene>
         <!--Nearby Shops-->
         <scene sceneID="OEw-zu-5aj">
@@ -652,14 +651,6 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="Save:" destination="X61-3r-z90" eventType="touchUpInside" id="4HS-8A-GJP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72S-hS-WNR">
-                                <rect key="frame" x="283" y="554" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="j6w-hm-DsX" kind="show" id="H93-sA-dkl"/>
                                 </connections>
                             </button>
                         </subviews>
