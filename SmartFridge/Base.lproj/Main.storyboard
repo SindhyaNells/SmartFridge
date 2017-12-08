@@ -424,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYp-aI-1Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="20"/>
+            <point key="canvasLocation" x="999" y="-1696"/>
         </scene>
         <!--Nearby Shops-->
         <scene sceneID="OEw-zu-5aj">
@@ -652,6 +652,14 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="Save:" destination="X61-3r-z90" eventType="touchUpInside" id="4HS-8A-GJP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72S-hS-WNR">
+                                <rect key="frame" x="283" y="554" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="j6w-hm-DsX" kind="show" id="H93-sA-dkl"/>
                                 </connections>
                             </button>
                         </subviews>
