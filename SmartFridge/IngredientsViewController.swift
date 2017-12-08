@@ -22,6 +22,10 @@ class IngredientsViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         ingredientsTable.delegate = self
         ingredientsTable.dataSource = self
+        print("Inside ingredient view controller")
+        print(foodLabel)
+        foodName.text = foodLabel
+        print(ingredients)
 
     }
 
@@ -33,7 +37,7 @@ class IngredientsViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return Names.count; //retun the number of items
+        return ingredients.count; //retun the number of items
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -45,10 +49,12 @@ class IngredientsViewController: UIViewController,UITableViewDelegate,UITableVie
     {
         let cell = ingredientsTable.dequeueReusableCell(withIdentifier: "ingredientsCell") as! IngredientsTableViewCell
         
-        print(Names)
+       // print(Names)
         //row = Names.count
-        cell.ingredientLabel.text = Names[indexPath.row]
+        cell.ingredientLabel.text = ingredients[indexPath.row]
         return cell
     }
+    
+    
     
 }

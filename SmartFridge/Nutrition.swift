@@ -14,6 +14,7 @@ class Nutrition: UIViewController
     @IBOutlet weak var calorieHeading: UILabel!
     @IBOutlet weak var calorieLabel: UILabel!
     let surveyData = ["cat": 30, "dog": 30, "both": 55, "neither": 45]
+    var ingredientsList = [String]()
     
     let pieChart: PieChartView =
     {
@@ -174,12 +175,12 @@ class Nutrition: UIViewController
     
     func parseJSON(_ data:Data)
     {
-        print(data)
+        
         
         var json: [Any]?
         do {
             json = try JSONSerialization.jsonObject(with: data) as? [Any]
-            print(json ?? "error json")
+            //print(json ?? "error json")
              guard let item = json?.first as? [String: Any],
                 let cal = item["calories"] as? Double,
                 let nutrients = item["totalNutrients"] as? [String: Any],
@@ -198,7 +199,8 @@ class Nutrition: UIViewController
                 let vita = nutrients["VITA_RAE"] as? [String:Any],
                 let vita_quantity = vita["quantity"] as? Double,
                 let vitc = nutrients["VITC"] as? [String:Any],
-                let vitc_quantity = vitc["quantity"] as? Double
+                let vitc_quantity = vitc["quantity"] as? Double,
+                let ingredients = item["ingredientLines"] as? [String]
                 else{
             return
             }
@@ -212,11 +214,12 @@ class Nutrition: UIViewController
             self.nutrients["Protein"] = protein_quantity
             self.nutrients["Vitamin A"] = vita_quantity
             //self.nutrients["Vitamin C"] = vitc_quantity
-            
+            print(ingredients)
+            ingredientsList = ingredients
             //loop over nutrients
-            for (key, value) in self.nutrients {
+            /*for (key, value) in self.nutrients {
                 print("\(key): \(value)")
-            }
+            }*/
             
         } catch {
             print("Error deserializing JSON: \(error)")
@@ -272,6 +275,17 @@ class Nutrition: UIViewController
         pieChart.data = chartData
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "gotoIngredients"
+        {
+            print("inside prepare for segue")
+            let ingredientSegue = segue.destination as? IngredientsViewController
+            ingredientSegue?.ingredients = ingredientsList
+            ingredientSegue?.foodLabel = recipeName
+            
+        }
+    }
     
 
 }

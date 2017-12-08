@@ -36,7 +36,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
 
         itemTableView.delegate = self
         itemTableView.dataSource = self
-        //itemTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
+        itemTableView.backgroundView = UIImageView(image: UIImage(named: "background.jpg"))
         
         //cell.backgroundView = UIImageView(image: UIImage(named: "background.jpg")!)
         
@@ -80,7 +80,7 @@ class Dashboard: UIViewController,UITableViewDelegate, UITableViewDataSource
         cell.itemLabel.text = Names[indexPath.row]
         cell.itemImage.image = UIImage(named: Names[indexPath.row])
         cell.itemIDLabel.text = String(ID[indexPath.row])
-        //cell.backgroundView = UIImageView(image: UIImage(named: "background.jpg")!)
+        cell.backgroundView = UIImageView(image: UIImage(named: "background.jpg")!)
         return cell
     }
     

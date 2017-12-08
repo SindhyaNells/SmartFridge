@@ -126,7 +126,7 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     }
     
     func getNearbyGroceryPlaces(){
-        let placesURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.3352,-121.8811&radius=2000&type=grocery_or_supermarket&key=AIzaSyCQ7nzuqrkbFNf15vueqVljJixWo56jzRw"
+        let placesURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.391,-121.982&radius=2000&type=grocery_or_supermarket&key=AIzaSyCQ7nzuqrkbFNf15vueqVljJixWo56jzRw"
         
         
         var request = URLRequest(url: URL(string: placesURL)!)
@@ -174,18 +174,33 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         //if annotation is MKUserLocation {
-        let pin = mapView.view(for: annotation) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
-            //pin.image = UIImage(named: "marker")
-        pin.image = self.imageWithImage(image: UIImage(named: "marker")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
-
-            userPinView = pin
-            return pin
+        if annotation is MKUserLocation {
+            return nil
+        }
+        /*let pin = mapView.view(for: annotation) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+         pin.image = self.imageWithImage(image: UIImage(named: "marker")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
+         userPinView = pin
+         return pin*/
+        
+        let annotationIdentifier = "Identifier"
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        
+        if let annotationView = annotationView {
             
-        //} else {
-            // handle other annotations
-            
-        //}
-        //return nil
+            annotationView.canShowCallout = true
+            annotationView.image = self.imageWithImage(image: UIImage(named: "marker")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
+        }
+        
+        return annotationView
+        
     }
     
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
@@ -255,5 +270,7 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             self.title = address
         }
     }
+    
+    
 
 }
