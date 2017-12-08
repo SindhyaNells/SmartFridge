@@ -26,9 +26,9 @@ class LocationController: UIViewController,MKMapViewDelegate {
         mapView.mapType = .standard
         
         if (CLLocationManager.locationServicesEnabled()) {
-            if locationManager == nil {
-                locationManager = CLLocationManager()
-            }
+            //if locationManager == nil {
+               locationManager = CLLocationManager()
+            //}
             locationManager.requestAlwaysAuthorization()
             locationManager.delegate = self as? CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -80,6 +80,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
     func getNearbyGroceryPlaces(){
         let placesURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.3352,-121.8811&radius=2000&type=grocery_or_supermarket&key=AIzaSyCQ7nzuqrkbFNf15vueqVljJixWo56jzRw"
         
+        
         var request = URLRequest(url: URL(string: placesURL)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -121,7 +122,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
     func parseJSON(_ data:Data){
         groceryPlaces = Array<GroceryPlaces>()
         
-        let groceryPlacesItem = GroceryPlaces()
+        //let groceryPlacesItem = GroceryPlaces()
         
         do {
             //if let data = data,
@@ -129,6 +130,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
                 let results = json["results"] as? [[String: Any]] {
                 for res in results {
                     let googleGeo = res["geometry"] as! NSDictionary
+                    let placeName = res["name"] as! String
                     let googleLoc = googleGeo["location"] as! NSDictionary
                     let latitude = googleLoc["lat"] as! Float
                     let longitude = googleLoc["lng"] as! Float
@@ -136,6 +138,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
                     //let loc = geo["location"] as? [[String: Any]]
                     //if let lat = loc["latitude"] as? String {
                         //names.append(name)
+                    print(placeName)
                         print(latitude)
                     print(longitude)
                     //}
