@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartFridge/Nutrition.swift"
-            timestampString = "534407439.611487"
+            timestampString = "534435938.001605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "getNutrition(recipe_id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartFridge/Nutrition.swift"
-            timestampString = "534407439.611911"
+            timestampString = "534435938.002033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "getRecipeID(recipe_name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,45 +266,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartFridge/Nutrition.swift"
-            timestampString = "534407439.612185"
+            timestampString = "534435938.002283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "parseJSON(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SmartFridge.Nutrition.parseJSON(Foundation.Data) -&gt; ()"
-                  moduleName = "SmartFridge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sindhu/iOSProjects/SmartFridge/SmartFridge/Nutrition.swift"
-                  timestampString = "534406730.508179"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "2820">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SmartFridge.Nutrition.parseJSON(Foundation.Data) -&gt; ()"
-                  moduleName = "SmartFridge"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sindhu/iOSProjects/SmartFridge/SmartFridge/Nutrition.swift"
-                  timestampString = "534406730.51016"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "3472">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SmartFridge/Nutrition.swift"
-            timestampString = "534407439.612434"
+            timestampString = "534435938.002512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "parseJSON(_:)"
             landmarkType = "7">
          </BreakpointContent>
