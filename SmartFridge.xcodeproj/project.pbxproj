@@ -31,6 +31,8 @@
 		FE0E3EBE1FD2253400CC1E63 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3EBD1FD2253400CC1E63 /* LocationController.swift */; };
 		FE0E3EC11FD2259100CC1E63 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0E3EC01FD2258A00CC1E63 /* MapKit.framework */; };
 		FE0E3EC31FD2330500CC1E63 /* GroceryPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */; };
+		FED2EEC01FDA3B8E009BFE5A /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = FED2EEBF1FDA3B8E009BFE5A /* Food101.mlmodel */; };
+		FED2EEC21FDA3F87009BFE5A /* CGImagePropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED2EEC11FDA3F87009BFE5A /* CGImagePropertyOrientation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		FE0E3EBD1FD2253400CC1E63 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		FE0E3EC01FD2258A00CC1E63 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryPlaces.swift; sourceTree = "<group>"; };
+		FED2EEBF1FDA3B8E009BFE5A /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Food101.mlmodel; path = "../../../Downloads/Food101-CoreML-master/Food101.mlmodel"; sourceTree = "<group>"; };
+		FED2EEC11FDA3F87009BFE5A /* CGImagePropertyOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImagePropertyOrientation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +122,10 @@
 				D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */,
 				FE0E3EBD1FD2253400CC1E63 /* LocationController.swift */,
 				FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */,
+				FED2EEBF1FDA3B8E009BFE5A /* Food101.mlmodel */,
 				D8DB01921FDA2EE100604EAD /* Nutrition.swift */,
 				D8DB01941FDA2F0A00604EAD /* MLViewController.swift */,
+				FED2EEC11FDA3F87009BFE5A /* CGImagePropertyOrientation.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED2EEC01FDA3B8E009BFE5A /* Food101.mlmodel in Sources */,
 				D86AA7B11FCD215400EBE265 /* GroceryListTableViewCell.swift in Sources */,
 				D897D7511FB26E590088E767 /* DashboardTableViewCell.swift in Sources */,
 				D8B3C2481FC2A68A0068BCF2 /* Login.swift in Sources */,
@@ -226,6 +233,7 @@
 				FE0E3EC31FD2330500CC1E63 /* GroceryPlaces.swift in Sources */,
 				D89980E81FCDE56400B5E0B4 /* GroceryListModel.swift in Sources */,
 				D86AA7B31FCD216D00EBE265 /* GroceryList.swift in Sources */,
+				FED2EEC21FDA3F87009BFE5A /* CGImagePropertyOrientation.swift in Sources */,
 				D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */,
 				D8DB01931FDA2EE100604EAD /* Nutrition.swift in Sources */,
 				D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */,
@@ -373,7 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsu.SmartFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -390,7 +398,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
 				INFOPLIST_FILE = SmartFridge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sjsu.SmartFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
