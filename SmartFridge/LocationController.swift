@@ -8,12 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class LocationController: UIViewController,MKMapViewDelegate {
+class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var groceryPlaces = Array<GroceryPlaces>()
     var clGeocoder = CLGeocoder()
+    var userPinView: MKAnnotationView!
     
     fileprivate var isCurrentLocation: Bool = false
     
@@ -31,7 +33,7 @@ class LocationController: UIViewController,MKMapViewDelegate {
             locationManager = CLLocationManager()
             //}
             locationManager.requestAlwaysAuthorization()
-            locationManager.delegate = self as? CLLocationManagerDelegate
+            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
@@ -168,6 +170,31 @@ class LocationController: UIViewController,MKMapViewDelegate {
         })
         
         task.resume()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //if annotation is MKUserLocation {
+        let pin = mapView.view(for: annotation) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            //pin.image = UIImage(named: "marker")
+        pin.image = self.imageWithImage(image: UIImage(named: "marker")!, scaledToSize: CGSize(width: 30.0, height: 30.0))
+
+            userPinView = pin
+            return pin
+            
+        //} else {
+            // handle other annotations
+            
+        //}
+        //return nil
+    }
+    
+    func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        //image.draw(in: CGRect(0, 0, newSize.width, newSize.height))
+        image.draw(in: CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: newSize.width, height: newSize.height))  )
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
     func parseJSON(_ data:Data){
