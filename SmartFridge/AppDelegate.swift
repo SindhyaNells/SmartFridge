@@ -42,6 +42,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+   /* func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]) -> Bool
+    {
+        let defaults = UserDefaults.standard
+        if (defaults.object(forKey:"UserId") != nil)
+        {
+            print("Logged In")// Skip Login
+            let storyboard = UIStoryboard(name: "MyStoryboard", bundle: nil)
+            let mainListVC = storyboard.instantiateViewController(withIdentifier: "Dashboard")
+            self.window!.rootViewController = mainListVC
+            
+        }
+        else
+        {
+            print("Logged Out")
+            let storyboard = UIStoryboard(name: "MyStoryboard", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "ViewController")
+            self.window!.rootViewController = loginVC
+        }
+        return true
+    }*/
+    
     //For Push notifications
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {

@@ -156,7 +156,7 @@ class QRCodeScanner: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
         let exp = "12/10/2017 12:00:00"*/
         
         //POST Request to Add items to fridge
-        let params = ["userId":userID, "name":name,"quantity": quantity,"price": price, "mfgDate":mfg, "expDate":exp, "status":"ispresent", "addedDate":"12/1/2017 12:00:00"] as Dictionary<String,String>
+        let params = ["userId":userID, "name":name,"quantity": quantity,"price": price, "mfgDate":mfg, "expDate":exp, "status":"ispresent", "addedDate":"2017-08-12"] as Dictionary<String,String>
         
         //print(params)
         

@@ -22,6 +22,10 @@
 		D8E41FCA1FB2717B006AC73A /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FC91FB2717B006AC73A /* Dashboard.swift */; };
 		D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */; };
 		D8E48BFF1FCF8343008E66C9 /* AddToGroceryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */; };
+		D8F6C28A1FDB0BB40031A19E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6C2891FDB0BB30031A19E /* Charts.framework */; };
+		D8F6C28B1FDB0BB40031A19E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6C2891FDB0BB30031A19E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8F6C28E1FDB14770031A19E /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F6C28D1FDB14770031A19E /* IngredientsTableViewCell.swift */; };
+		D8F6C2901FDB14950031A19E /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F6C28F1FDB14950031A19E /* IngredientsViewController.swift */; };
 		D8FC718F1FD1FE2A003F6C03 /* CustomGroceryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */; };
 		D8FF75241FABF0A600FCE0EC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75231FABF0A600FCE0EC /* HomeModel.swift */; };
 		D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */; };
@@ -34,6 +38,20 @@
 		FE0E3EC31FD2330500CC1E63 /* GroceryPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0E3EC21FD2330500CC1E63 /* GroceryPlaces.swift */; };
 		FED2EEC21FDA3F87009BFE5A /* CGImagePropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED2EEC11FDA3F87009BFE5A /* CGImagePropertyOrientation.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D8F6C28C1FDB0BB40031A19E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D8F6C28B1FDB0BB40031A19E /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D8118DBC1FABA1DA00294556 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -52,6 +70,9 @@
 		D8E41FCB1FB2C083006AC73A /* RestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiUrl.swift; sourceTree = "<group>"; };
 		D8E48BFE1FCF8343008E66C9 /* AddToGroceryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToGroceryList.swift; sourceTree = "<group>"; };
 		D8E48C001FCF8A31008E66C9 /* SmartFridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartFridge.entitlements; sourceTree = "<group>"; };
+		D8F6C2891FDB0BB30031A19E /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		D8F6C28D1FDB14770031A19E /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
+		D8F6C28F1FDB14950031A19E /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		D8FC718E1FD1FE2A003F6C03 /* CustomGroceryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGroceryListCell.swift; sourceTree = "<group>"; };
 		D8FF75231FABF0A600FCE0EC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		D8FF75251FAC2E3500FCE0EC /* FridgeItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeItemsModel.swift; sourceTree = "<group>"; };
@@ -73,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE0E3EC11FD2259100CC1E63 /* MapKit.framework in Frameworks */,
+				D8F6C28A1FDB0BB40031A19E /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +104,7 @@
 		E63FD6CB1FA50521008A2D22 = {
 			isa = PBXGroup;
 			children = (
+				D8F6C2891FDB0BB30031A19E /* Charts.framework */,
 				E63FD6D61FA50521008A2D22 /* SmartFridge */,
 				E63FD6D51FA50521008A2D22 /* Products */,
 				FE0E3EBF1FD2258A00CC1E63 /* Frameworks */,
@@ -126,6 +149,8 @@
 				D8DB01921FDA2EE100604EAD /* Nutrition.swift */,
 				D8DB01941FDA2F0A00604EAD /* MLViewController.swift */,
 				FED2EEC11FDA3F87009BFE5A /* CGImagePropertyOrientation.swift */,
+				D8F6C28D1FDB14770031A19E /* IngredientsTableViewCell.swift */,
+				D8F6C28F1FDB14950031A19E /* IngredientsViewController.swift */,
 			);
 			path = SmartFridge;
 			sourceTree = "<group>";
@@ -148,6 +173,7 @@
 				E63FD6D01FA50521008A2D22 /* Sources */,
 				E63FD6D11FA50521008A2D22 /* Frameworks */,
 				E63FD6D21FA50521008A2D22 /* Resources */,
+				D8F6C28C1FDB0BB40031A19E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +258,7 @@
 				D84A7C351FDA5C1800E61859 /* Food101.mlmodel in Sources */,
 				D8118DBF1FABAE4E00294556 /* QRCodeScanner.swift in Sources */,
 				E63FD6D81FA50521008A2D22 /* AppDelegate.swift in Sources */,
+				D8F6C28E1FDB14770031A19E /* IngredientsTableViewCell.swift in Sources */,
 				D8FC718F1FD1FE2A003F6C03 /* CustomGroceryListCell.swift in Sources */,
 				FE0E3EC31FD2330500CC1E63 /* GroceryPlaces.swift in Sources */,
 				D89980E81FCDE56400B5E0B4 /* GroceryListModel.swift in Sources */,
@@ -242,6 +269,7 @@
 				D8E41FCC1FB2C083006AC73A /* RestApiUrl.swift in Sources */,
 				D8E48BFF1FCF8343008E66C9 /* AddToGroceryList.swift in Sources */,
 				D8472A1B1FB62E880099A882 /* SignUp.swift in Sources */,
+				D8F6C2901FDB14950031A19E /* IngredientsViewController.swift in Sources */,
 				FE0E3EBE1FD2253400CC1E63 /* LocationController.swift in Sources */,
 				D8FF75261FAC2E3500FCE0EC /* FridgeItemsModel.swift in Sources */,
 			);
@@ -383,6 +411,10 @@
 				CODE_SIGN_ENTITLEMENTS = SmartFridge/SmartFridge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SmartFridge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -400,6 +432,10 @@
 				CODE_SIGN_ENTITLEMENTS = SmartFridge/SmartFridge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZS93TK53J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SmartFridge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

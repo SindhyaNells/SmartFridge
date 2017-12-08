@@ -64,7 +64,7 @@ class Profile: UIViewController {
         
         let DNS = RestApiUrl()
         
-        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/profileDetails/"+UserID)!)
+        var request = URLRequest(url: URL(string: DNS.aws + "/SmartFridgeBackend/user/"+UserID)!)
         request.httpMethod = "GET"
         request.httpBody = try? JSONSerialization.data(withJSONObject: [] ,options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -169,6 +169,13 @@ class Profile: UIViewController {
         
     }
     
+    @IBAction func logout(_ sender: UIButton)
+    {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "UserId")
+        defaults.synchronize()
+        self.performSegue(withIdentifier: "logout", sender: nil)
+    }
     
     /*
     // MARK: - Navigation
