@@ -111,7 +111,7 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                     coordinates = placemark!.location!.coordinate
                     points.append(coordinates!)
                     print("locations = \(coordinates!.latitude) \(coordinates!.longitude)")
-                    annotation = Annotation(latitude: coordinates!.latitude, longitude: coordinates!.longitude, address: address.name!)
+                    annotation = Annotation(latitude: coordinates!.latitude, longitude: coordinates!.longitude, address: address.name!, subTitle: address.openStatus!)
                     stations.append(annotation!)
                     print(stations.count)
                     print(i)
@@ -231,9 +231,16 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
                     let latitude = googleLoc["lat"] as! Float
                     let longitude = googleLoc["lng"] as! Float
                     
+                    let open_hours = res["opening_hours"] as! NSDictionary
+                    let open_now = open_hours["open_now"] as! Bool
+                    
                     groceryItem.name = placeName
                     groceryItem.latitude = latitude
                     groceryItem.longitude = longitude
+                    if open_now == true{
+                        groceryItem.openStatus = "Open"}
+                    else{
+                        groceryItem.openStatus = "Not Open"}
                     
                     self.groceryPlaces.append(groceryItem)
                 
@@ -257,6 +264,7 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
     
     class Annotation: NSObject, MKAnnotation {
         var title: String?
+        var subtitle: String?
         var lat: Double
         var long:Double
         
@@ -264,10 +272,11 @@ class LocationController: UIViewController,MKMapViewDelegate,CLLocationManagerDe
             return CLLocationCoordinate2D(latitude: lat, longitude: long)
         }
         
-        init(latitude: Double, longitude: Double, address: String) {
+        init(latitude: Double, longitude: Double, address: String, subTitle: String) {
             self.lat = latitude
             self.long = longitude
             self.title = address
+            self.subtitle = subTitle
         }
     }
     

@@ -15,6 +15,7 @@ class GroceryPlaces: NSObject {
     var name: String?
     var latitude: Float?
     var longitude: Float?
+    var openStatus: String?
     
     //empty constructor
     
@@ -25,13 +26,13 @@ class GroceryPlaces: NSObject {
     
     //construct with parameters
     
-    init(name: String, latitude: Float, longitude: Float)
+    init(name: String, latitude: Float, longitude: Float, openNow: String)
     {
         
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
-        
+        self.openStatus = openNow
     }
     
     
